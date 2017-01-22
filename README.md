@@ -1,4 +1,5 @@
 # Attiny-i2c-adc-8bit
+<<<<<<< HEAD
 
 an Attiny85 2 channel 8 bit adc using TinywireS library
 
@@ -16,3 +17,7 @@ The user should then delay reading registers 2 or 3 for the result by 200ms, to 
 
 For diagnostic purposes, I2C registers ox01 contains the # of the last ADC sampled; registers 0x04 and 0x05 contain the last (50th) adc sample value, and the adc config byte.
   
+=======
+Atiny85 2 channel 8 bit adc using TinywireS library 
+
+>>>>>>> 5b4c310d9f8d9ad2d1a67eebc1065b3f3324a548
