@@ -4,7 +4,7 @@ an Attiny85 2 channel 8 bit adc using TinywireS library
 
 This code turns an Attiny85 into a 2-channel 8-bit adc commuicating via the i2c bus. 
 
- ![Alt text](//github.com/donquixote2u/Attiny-i2c-adc-8bit/edit/master/Attiny85-i2c-adc.jpg?raw=true "sample circuit")
+ ![Alt text](../Attiny85-i2c-adc.jpg?raw=true "sample circuit")
 
 It has been tested with an ESP 8266 running Nodemcu lua firmware, but should be good for both 5v and 3v3 applications e.g. Arduino, Raspberry Pi.
 
