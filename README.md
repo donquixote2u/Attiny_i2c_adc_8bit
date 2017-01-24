@@ -18,3 +18,4 @@ The user should then delay reading registers 2 or 3 for the result by 200ms, to 
 
 For diagnostic purposes, I2C registers ox01 contains the # of the last ADC sampled; registers 0x04 and 0x05 contain the last (50th) adc sample value, and the adc config byte.
 
+A sample lua module is provided that reads both channels. It is rather simple, and should be easily coverted to e.g. Arduino or Rasp Pi code.
