@@ -1,6 +1,6 @@
 # Attiny-i2c-adc-8bit
 
-an Attiny85 2 channel 8 bit adc using TinywireS library
+an Attiny85 2 channel 8 bit adc using TinywireS library for i2c functions
 
 This code turns an Attiny85 into a 2-channel 8-bit adc commuicating via the i2c bus. 
 
