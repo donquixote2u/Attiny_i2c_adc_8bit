@@ -8,7 +8,7 @@ as shown in the following example circuit
 19/7/18  Rev 2 - spare pin (pin 6/ arduino D1) used as sink for voltage divider 
 ( so can be turned on/off to remove current draw after testing)
 
- ![Sample Circuit](https://github.com/donquixote2u/blob/master/Attiny-i2c-adc-8bit/Attiny85-i2c-adc.jpg)
+ ![Sample Circuit](https://github.com/donquixote2u/Attiny-i2c-adc-8bit/blob/master/Attiny85-i2c-adc.jpg)
 
 It has been tested with an ESP 8266 running Nodemcu lua firmware, but should be good for both 5v and 3v3 applications e.g. Arduino, Raspberry Pi.
 
