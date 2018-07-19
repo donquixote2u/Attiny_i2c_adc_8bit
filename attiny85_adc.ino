@@ -1,9 +1,9 @@
 /* attiny85 set up as i2c dual adc sensor */
-
+/* Rev2  19/7/18 Bruce Woolmore;  use pin 6 (digital 1) as sink for voltage divider/comparators
 /* I2C Slave address.You can have multiple sensors with different addresses */
 #define I2C_SLAVE_ADDRESS 0x13
 /* chip pin 2 = arduino pin 3 = adc pin A3 ,chip pin 3 = arduino pin 4 = adc pin A2 */ 
-
+/* also use chip pin 6 = arduino pin 1  as sink */
 #ifndef TWI_RX_BUFFER_SIZE
 #define TWI_RX_BUFFER_SIZE ( 16 )
 #endif
@@ -87,6 +87,9 @@ void initADC()
 
 uint8_t sample_adc(int channel) 
 {
+// 19/7/18 set voltage divider sink pin LOW
+pinMode(1,OUTPUT);
+digitalWrite(1,LOW);
  // select which adc to use (set ADMUX bit 0 on/off = adc3/2
  if(channel==3) { ADMUX |= (1<<0); }  // set last bit of ADMUX on
  else           { ADMUX &= ~(1<<0); }    // set last bit of ADMUX off
@@ -96,13 +99,14 @@ uint8_t sample_adc(int channel)
  int sample_loop;
  for (sample_loop=50; sample_loop > 0 ; sample_loop --)
  {
-   ADCSRA |= (1 << ADSC);         // start ADC measurement
-   while (ADCSRA & (1 << ADSC) ){}; // wait till conversion complete 
-   voltage_fl = voltage_fl + ((ADCH - voltage_fl) / 15);  // last 15 rolling average
+   ADCSRA |= (1 << ADSC);         				// start ADC measurement
+   while (ADCSRA & (1 << ADSC) ){}; 			// wait till conversion complete 
+   voltage_fl = voltage_fl + ((ADCH - voltage_fl) / 15); // last 15 rolling average
  }
   uint8_t result = (uint8_t) voltage_fl+0.5; // round float to integer
-  i2c_regs[4]=ADMUX; // save ADMUX settings for diag use
-  i2c_regs[5]=ADCH;  // save last adc reading for diag use
+  i2c_regs[4]=ADMUX; 		// save ADMUX settings for diag use
+  i2c_regs[5]=ADCH;  		// save last adc reading for diag use
+  digitalWrite(1,HIGH);   		// set sink pin HIGH to turn off voltage divider circuit
   return result;
 }
 
