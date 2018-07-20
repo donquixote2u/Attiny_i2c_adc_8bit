@@ -1,5 +1,6 @@
 /* attiny85 set up as i2c dual adc sensor */
 /* Rev2  19/7/18 Bruce Woolmore;  use pin 6 (digital 1) as sink for voltage divider/comparators
+/*  also change default ADPS2/1/0 settings to 8mhz operation
 /* I2C Slave address.You can have multiple sensors with different addresses */
 #define I2C_SLAVE_ADDRESS 0x13
 /* chip pin 2 = arduino pin 3 = adc pin A3 ,chip pin 3 = arduino pin 4 = adc pin A2 */ 
@@ -80,9 +81,9 @@ void initADC()
 
   ADCSRA = 
             (1 << ADEN)  |     // Enable ADC 
-            (0 << ADPS2) |     // set prescaler to 8, bit 2 
-            (1 << ADPS1) |     // set prescaler to 8, bit 1 
-            (1 << ADPS0);      // set prescaler to 8, bit 0  
+            (1 << ADPS2) |     // set prescaler bit 2; 1 for 64/8mhz 0 for 8/1mhz
+            (1 << ADPS1) |     // set prescaler bit 1; 1 for both 64/8mhz and 8/1mhz  
+            (0 << ADPS0);      // set prescaler bit 0; 0 for 64/8mhz, 1 for 8/1mhz  
 }
 
 uint8_t sample_adc(int channel) 
